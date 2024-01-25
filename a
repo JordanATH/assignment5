@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>assignment 5</title>
+</head>
+<body>
+    <div class="container">
+        <label for="outputLabel">Output:</label>
+        <div id="outputLabel" class="output-label"></div>
+        <input type="text" id="inputText" maxlength="1">
+        <button onclick="addCharacter()">Add Character</button>
+        <button onclick="deleteCharacter()">Delete Character</button>
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.output-label {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 8px;
+    cursor: pointer;
+}
+function addCharacter() {
+    var outputLabel = document.getElementById("outputLabel");
+    var inputText = document.getElementById("inputText");
+
+    var currentText = outputLabel.innerHTML;
+    var newText = currentText + inputText.value;
+    outputLabel.innerHTML = newText;
+
+    // Clear the input field after adding character
+    inputText.value = "";
+}
+
+function deleteCharacter() {
+    var outputLabel = document.getElementById("outputLabel");
+
+    var currentText = outputLabel.innerHTML;
+    if (currentText.length > 0) {
+        var newText = currentText.substring(0, currentText.length - 1);
+        outputLabel.innerHTML = newText;
+    }
+}
